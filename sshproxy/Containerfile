@@ -13,11 +13,11 @@ RUN chsh --shell /bin/false root
 # Prevent error: "Missing privilege separation directory: /run/sshd"
 RUN mkdir -v /run/sshd
 
-# Create config directory
-RUN mkdir /config
+# Create config and secret directory
+RUN mkdir /config /secret
 
 EXPOSE 22
-VOLUME ["/config"]
+VOLUME ["/config", "/secret"]
 WORKDIR /
 
 CMD /usr/sbin/sshd -D

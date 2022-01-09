@@ -4,9 +4,9 @@
 PermitRootLogin yes
 
 # Read server host keys from /config
-HostKey /config/ssh_host_rsa_key
-HostKey /config/ssh_host_ecdsa_key
-HostKey /config/ssh_host_ed25519_key
+HostKey /secret/ssh_host_rsa_key
+HostKey /secret/ssh_host_ecdsa_key
+HostKey /secret/ssh_host_ed25519_key
 
 # Read authorized keys from /config
 AuthorizedKeysFile /config/authorized_keys
