@@ -24,6 +24,7 @@ gcp-create-secret: ## Create GCP secret object
 
 .PHONY: gcp-renew-secret
 gcp-renew-secret: ## Add a new version of host keys to the GCP secret object
+	make clean-hostkey
 	make generate-hostkey
 	tar cv ssh_host_*_key* | gcloud secrets versions add $(SECRET_NAME) --data-file=-
 	make clean-hostkey
