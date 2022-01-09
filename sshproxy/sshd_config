@@ -1,0 +1,32 @@
+# SSH config for SSH-based proxy server
+
+# We use root
+PermitRootLogin yes
+
+# Read server host keys from /config
+HostKey /config/ssh_host_rsa_key
+HostKey /config/ssh_host_ecdsa_key
+HostKey /config/ssh_host_ed25519_key
+
+# Read authorized keys from /config
+AuthorizedKeysFile /config/authorized_keys
+
+# Tighten up login policy
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+LoginGraceTime 5s
+MaxAuthTries 1
+
+# Keep-alive for 5 minutes
+ClientAliveInterval 30s
+ClientAliveCountMax 10
+
+## One session per connection (no multiplexing)
+#MaxSessions 1
+
+# Allow forwarding and tunneling
+AllowTcpForwarding yes
+PermitTunnel yes
+
+# No cruft
+PrintMotd no

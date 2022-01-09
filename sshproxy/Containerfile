@@ -1,0 +1,23 @@
+FROM debian:bullseye
+
+RUN apt-get update \
+    && apt-get install --yes --no-install-recommends \
+        openssh-server \
+    && rm -rfv /var/lib/apt/lists/
+
+COPY ./sshd_config /etc/ssh/sshd_config
+
+# Deny root shell access
+RUN chsh --shell /bin/false root
+
+# Prevent error: "Missing privilege separation directory: /run/sshd"
+RUN mkdir -v /run/sshd
+
+# Create config directory
+RUN mkdir /config
+
+EXPOSE 22
+VOLUME ["/config"]
+WORKDIR /
+
+CMD /usr/sbin/sshd -D
