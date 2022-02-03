@@ -21,4 +21,4 @@ EXPOSE 22
 VOLUME ["/config"]
 WORKDIR /
 
-CMD /entrypoint.sh
+CMD ["/entrypoint.sh"]
