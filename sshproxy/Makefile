@@ -1,6 +1,6 @@
 
-SECRET_NAME=sshproxy-hostkey
-IMAGE_NAME=docker.io/esjeon/sshproxy
+IMAGE=docker.io/esjeon/sshproxy
+TAG=3
 
 .PHONY: help
 help:
@@ -11,7 +11,7 @@ clean: clean-hostkey ## Clean
 
 .PHONY: build-image
 build-image: ## Build container image
-	buildah build --layers --tag $(IMAGE_NAME):latest .
+	buildah build --layers --tag $(IMAGE):$(TAG) .
 
 .PHONY: clean-hostkey
 clean-hostkey: ## Remove generated host keys
