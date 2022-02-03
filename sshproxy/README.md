@@ -1,34 +1,38 @@
 sshproxy
 ========
 
-SSH daemon configured to be used as VPN server.
+SSH daemon configured to be used as SOCKS proxy server.
+
+Build
+-----
+
+    make build-image
 
 
 Configuration
 -------------
 
-The image expects `/config` directory to contain following files:
+Place thesefiles under `/config`:
 
- * `authorized_keys`
- * SSH host keys
-   - One of `ssh_host_rsa_key`, `ssh_host_ecdsa_key`, `ssh_host_ed25519_key`
+    authorized_keys
 
-The host key files can be generated using `generate-host-keys.sh`.
+    ssh_host_rsa_key
+    ssh_host_ecdsa_key
+    ssh_host_ed25519_key
+
+The host key files can be generated using `make generate-hostkey`.
 
 
 Deployment
 ----------
 
-	docker run -d -v /path/to/config:/config -p 1234:22 sshproxy
+### Server
+
+    docker run -d -v /path/to/config:/config -p ${SSH_PORT}:22 sshproxy
 
 
-Usage
------
+### Client
 
-Example:
+    ssh -i path/to/identity -p ${SSH_PORT} -N -D ${SOCKS_PORT} root@server.host.name
 
-	ssh -N -D1234 root@example.com
-
-You must login to `root` account using public key authentication. Note that
-shell access is denied, so you must append `-N` flag to keep the session alive.
 
