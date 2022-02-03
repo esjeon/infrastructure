@@ -3,10 +3,10 @@
 # We use root
 PermitRootLogin yes
 
-# Read server host keys from /config
-HostKey /secret/ssh_host_rsa_key
-HostKey /secret/ssh_host_ecdsa_key
-HostKey /secret/ssh_host_ed25519_key
+# Read server host keys from /root (copied from /config)
+HostKey /root/ssh_host_rsa_key
+HostKey /root/ssh_host_ecdsa_key
+HostKey /root/ssh_host_ed25519_key
 
 # Read authorized keys from /config
 AuthorizedKeysFile /config/authorized_keys
