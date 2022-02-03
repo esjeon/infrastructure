@@ -32,7 +32,7 @@ Deployment
 
 ### Server
 
-    docker run -d -v /path/to/config:/config -p ${SSH_PORT}:22 sshproxy
+    podman run -d -v /path/to/config:/config:Z -p ${SSH_PORT}:22 sshproxy
 
 
 ### Client
