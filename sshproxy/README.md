@@ -6,8 +6,12 @@ SSH daemon configured to be used as SOCKS proxy server.
 Build
 -----
 
-    make build-image
+    make build      # Build dev image
+    make build-prod # Build prod multi-arch image
+    make push-prod  # Upload the multi-arch image to the repository
 
+To build multi-arch images, you'll need to register `qemu-user-static` to
+`binfmt_misc`.
 
 Configuration
 -------------
