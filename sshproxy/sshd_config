@@ -15,7 +15,6 @@ AuthorizedKeysFile /config/authorized_keys
 PasswordAuthentication no
 ChallengeResponseAuthentication no
 LoginGraceTime 5s
-MaxAuthTries 1
 
 # Keep-alive for 5 minutes
 ClientAliveInterval 30s
